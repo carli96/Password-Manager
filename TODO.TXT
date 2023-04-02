@@ -1,0 +1,19 @@
+Interfaz
+    SignIn:
+        SSO microsoft
+        Conectar BBDD
+        Cargar contraseñas
+
+    PassList:
+        Que muestre las contraseñas
+        Que deje seleccionar una contraseña ya existente
+        Cada vez que se añade una contraseña que se recargue la lista
+
+    NewAccount:
+        Arreglar bug
+        Que guarde lo creado en la BBDD
+
+    ExistingAccount:
+        Hacerlo
+
+Implementar un tema
