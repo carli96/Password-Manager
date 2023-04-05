@@ -10,7 +10,7 @@ import random, string
 # manages different errors that might happen while introducing wrong attribute values
 def generatePassword(nWords, caps, numbers, symbols):
     #First we read the wordlist (only English words in lower case)
-    with open("./corncob_lowercase.txt", "r") as file:
+    with open("./nonExecutableFiles/corncob_lowercase.txt", "r") as file:
         allText = file.read()
         words = list(map(str, allText.split()))
         # We select randomly a fixed number of words (4 by default)

@@ -1,8 +1,6 @@
 Interfaz
     SignIn:
-        SSO microsoft
-        Conectar BBDD
-        Cargar contraseñas
+        Conectar BBDD y cargar contraseñas
 
     PassList:
         Que muestre las contraseñas
@@ -15,5 +13,9 @@ Interfaz
 
     ExistingAccount:
         Hacerlo
+    
+    MainFile: 
+        Que launchea todo
 
-Implementar un tema
+Implementar un tema y arreglar Interfaz
+Quitar comentarios en español y comentar en inglés
