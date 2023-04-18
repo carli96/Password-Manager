@@ -18,5 +18,7 @@ Interfaz
     MainFile: 
         Que launchea todo
 
+    Bug:
+        Create account le das cancel y ya no abre los elementos de la lista
 Implementar un tema y arreglar Interfaz
 Quitar comentarios en español y comentar en inglés
