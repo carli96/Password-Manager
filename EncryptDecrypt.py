@@ -6,6 +6,7 @@ from unicodedata import normalize
 
 encryptedPass, hashPass, endMsg   = "", "", ""
 
+#function to encrypt the passwords
 def encryptPass(password):
     outputFinal, outputDB  = [], []  #E(password)   IV,Hash,Key
     while True:
@@ -31,6 +32,7 @@ def encryptPass(password):
     outputFinal.append(outputDB)
     return outputFinal
 
+#function to decrypt the password
 def decryptPass(endMsg,outputDB):
     iv, hash, key = outputDB[0], outputDB[1], outputDB[2]
 
