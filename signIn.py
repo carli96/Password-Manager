@@ -27,7 +27,9 @@ flow = Flow.from_client_secrets_file(
     redirect_uri="http://127.0.0.1:5000/callback"
 )
 
-#manage if there has been a login
+# manage if there has been a login
+
+
 def login_is_required(function):
     def wrapper(*args, **kwargs):
         if "google_id" not in session:
@@ -37,7 +39,9 @@ def login_is_required(function):
 
     return wrapper
 
-#route to manage the login process
+# route to manage the login process
+
+
 @app.route("/callback")
 def callback():
     flow.fetch_token(authorization_response=request.url)
@@ -62,13 +66,17 @@ def callback():
     userId = session["google_id"]
     return userId
 
-#route to logout
+# route to logout
+
+
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect("/")
 
-#index
+# index
+
+
 @app.route("/")
 def index():
     authorization_url, state = flow.authorization_url()
@@ -77,7 +85,9 @@ def index():
     closeWindow()
     return endExecution()
 
-#function to closs the window 
+# function to closs the window
+
+
 def closeWindow():
     return """
     <html>
@@ -92,7 +102,9 @@ def closeWindow():
         </body>
     </html>"""
 
-#end the flask execution after recovering the password
+# end the flask execution after recovering the password
+
+
 def endExecution():
     # Código a ejecutar
     request.environ.get('werkzeug.server.shutdown')()
@@ -111,21 +123,22 @@ def manageWindow():
     # Define layout
     sg.theme("DarkBlue")
     layout = [[sg.Text(text='Welcome to password vault',
-                        font=('Arial Bold', 16),
-                        size=20, expand_x=True,
-                        justification='center')],
-                        [sg.Button("Log in with Google")],
+                       font=('Arial Bold', 16),
+                       size=20, expand_x=True,
+                       justification='center')],
+              [sg.Button("Log in with Google")],
               [sg.Image('img/googleLogo.png',
-                         expand_x=True, expand_y=True)]
+                        expand_x=True, expand_y=True)]
               ]
-    window = sg.Window("LogIn", layout, size=(715,350),element_justification='c')
+    window = sg.Window("LogIn", layout, size=(
+        715, 350), element_justification='c')
 
     # Start the loop
     while True:
         event, values = window.read()
         # If the "log in wth google" is pressed
         if event == "Log in with Google":
-            url = "http://127.0.0.1:5000"  
+            url = "http://127.0.0.1:5000"
             # Open the URL in a new browser window/tab
             webbrowser.open_new(url)
             app.run(debug=False)
@@ -135,7 +148,7 @@ def manageWindow():
             # TODO comprobar si hay una entrada en la tabla con id = google_id
             # TODO si lo hay extraer los nombres de todas las cuentas que ha almacenado
             # TODO si no lo hay, crear una nueva entrada
-            
+
         if event == sg.WINDOW_CLOSED:
             break
 
@@ -143,6 +156,7 @@ def manageWindow():
     window.close()
 
 # TODO FUNCIÓN QUE RECIBA VALORES Y LOS COLOQUE EN LA LISTA
+
 
 '''
 if __name__ == '__main__':
