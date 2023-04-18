@@ -45,6 +45,8 @@ def decryptPass(endMsg,outputDB):
     print("Decrpted message: " + dec.decode())
     var = endMsg.partition(hash.decode())
 
+'''
 if __name__ == '__main__':
     encryptPass("luisqqqqluisqqqqluisqqqqluisqqqqq")
+'''
      

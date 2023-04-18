@@ -144,7 +144,8 @@ def manageWindow():
 
 # TODO FUNCIÓN QUE RECIBA VALORES Y LOS COLOQUE EN LA LISTA
 
-
+'''
 if __name__ == '__main__':
     manageWindow()
     # app.run(debug=True)
+'''
