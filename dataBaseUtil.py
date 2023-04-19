@@ -28,13 +28,16 @@ def find():
 def searchByUserID(user_id):
     # Access the collection you want to search
     collection = db.Accounts
+    result = []
+    try: 
+        # Search for documents that match the userID
+        results = collection.find({"userID": user_id})
+        for record in results:
+            result.append(record)
+    except:
+        result = ["newUser"]
 
-    # Search for documents that match the userID
-    results = collection.find({"userID": user_id})
-
-    # Iterate over the results and print each document
-    for result in results:
-        print(result)
+    return result
 
 def insert(accountPK, userID,EncryptedKey, HashedKey, IV):
     # Create a document to insert

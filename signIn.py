@@ -4,7 +4,7 @@ import pathlib
 import requests
 import google.auth.transport.requests
 import webbrowser
-from flask import Flask, session, abort, redirect, request, url_for, current_app
+from flask import Flask, session, abort, redirect, request, Response
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
@@ -63,14 +63,17 @@ def callback():
 
     session["google_id"] = id_info.get("sub")
     session["name"] = id_info.get("name")
+    global userId
     userId = session["google_id"]
-    return userId
+    closeWindow()
+    endExecution()
+    return Response(status=200)
+    #return redirect("/protected_area")
 
 # route to logout
-
-
 @app.route("/logout")
 def logout():
+    print("logout")
     session.clear()
     return redirect("/")
 
@@ -81,13 +84,9 @@ def logout():
 def index():
     authorization_url, state = flow.authorization_url()
     session["state"] = state
-    redirect(authorization_url)
-    closeWindow()
-    return endExecution()
+    return redirect(authorization_url)
 
-# function to closs the window
-
-
+# function to close the window
 def closeWindow():
     return """
     <html>
@@ -98,13 +97,11 @@ def closeWindow():
             </script>
         </head>
         <body>
-            <p>Respuesta HTTP recibida</p>
+            <p>HTTP response received</p>
         </body>
     </html>"""
 
 # end the flask execution after recovering the password
-
-
 def endExecution():
     # Código a ejecutar
     request.environ.get('werkzeug.server.shutdown')()
@@ -120,6 +117,7 @@ def protected_area():
 
 
 def manageWindow():
+    global userId
     # Define layout
     sg.theme("DarkBlue")
     layout = [[sg.Text(text='Welcome to password vault',
@@ -142,12 +140,10 @@ def manageWindow():
             # Open the URL in a new browser window/tab
             webbrowser.open_new(url)
             app.run(debug=False)
+            closeWindow()
             passListWindow = NotebookLoader().load_module('PassList')
             window.close()
-            passListWindow.manageWindow()
-            # TODO comprobar si hay una entrada en la tabla con id = google_id
-            # TODO si lo hay extraer los nombres de todas las cuentas que ha almacenado
-            # TODO si no lo hay, crear una nueva entrada
+            passListWindow.manageWindow(userId)
 
         if event == sg.WINDOW_CLOSED:
             break
@@ -157,9 +153,8 @@ def manageWindow():
 
 # TODO FUNCIÓN QUE RECIBA VALORES Y LOS COLOQUE EN LA LISTA
 
-
 '''
 if __name__ == '__main__':
-    manageWindow()
-    # app.run(debug=True)
+    #manageWindow()
+    app.run(debug=True)
 '''
