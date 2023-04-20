@@ -16,7 +16,8 @@ userId = ""
 app = Flask("Google Login App")
 app.secret_key = "CodeSpecialist.com"
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-GOOGLE_CLIENT_ID = "709048093959-h458e98t1o2rgajm1h293jmv80nnt1ab.apps.googleusercontent.com"
+#GOOGLE_CLIENT_ID = "709048093959-h458e98t1o2rgajm1h293jmv80nnt1ab.apps.googleusercontent.com"
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
 client_secrets_file = os.path.join(pathlib.Path(
     __file__).parent, "nonExecutableFiles/client_secret.json")
 
@@ -150,8 +151,6 @@ def manageWindow():
 
     # Close windows
     window.close()
-
-# TODO FUNCIÓN QUE RECIBA VALORES Y LOS COLOQUE EN LA LISTA
 
 '''
 if __name__ == '__main__':
