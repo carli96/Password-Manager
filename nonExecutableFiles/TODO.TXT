@@ -1,24 +1,32 @@
-Interfaz
-    EncryptDecrypt:
-        Que funcione
-        
-    SignIn:
-        Conectar BBDD y cargar contraseñas
-
+Errores/ A implementar en ventanas:   
     PassList:
-        Que deje seleccionar una cuenta ya existente
-        Cada vez que se añade una cuenta que se recargue la lista
-
-    NewAccount:
-        Que guarde lo creado en la BBDD
+        Cuando se selecciona una cuenta existente:
+            Se extrae la info del server y del json local para mostrar todo en ExistingAccount
+        Hacer la ventana mas grande
 
     ExistingAccount:
-        Hacerlo
+        Que muestre la contraseña con *
+        Meter un boton que cuando se pulse muestre la contraseña normal
+        Estaba bien hacer un boton que te copie la contraseña al portapapeles (incluso cuando se muestra con *)
     
-    MainFile: 
-        Que launchea todo
+    EncryptDecrypt:
+        Renombrar EncryptDecrypt.py a encryptDecrypt.py y actualizar el nuevo nombre en todos los sitios desde donde se llama
 
-    Bug:
-        Create account le das cancel y ya no abre los elementos de la lista
-Implementar un tema y arreglar Interfaz
-Quitar comentarios en español y comentar en inglés
+General:
+    Comentar código
+
+A implementar:
+    Borrado de cuentas, un botón en PassList que elimine la contraseña de la lista y:
+        La elimine del json -> en passList.py
+        La elimine de la BBDD -> por lo que habrá que implementar una función para esto en dataBaseUtil.py
+    Plantearse extraer la funcionalidad referente al json de passList y crear un jsonUtils.py
+
+Bug:
+    Create account le das cancel y ya no abre los elementos de la lista
+    Cerrar pestaña login
+
+Antes de entregar:
+    Quitar print
+    Quitar librerías innecesarias y código que no se llame
+    Format de todos los .py
+    Quitar todos los main menos main.py

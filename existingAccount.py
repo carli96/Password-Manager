@@ -1,13 +1,9 @@
 import PySimpleGUI as sg
-import passGenerator
-import EncryptDecrypt
-import maskpass
 
+#TODO: meter un boton de mostrar contraseña y que quite los * (si se vuelve a pulsar que los vuelva a poner)
+#TODO: meter un boton de copia, que copie en el portapapeles la contraeña aunque tenga ****
 
-# function to generate the new account window
-
-
-def window(user, passw, web):
+def manageWindow(user, passw, web):
     sg.theme("DarkBlue")
     column_to_centered = [[sg.Text('WebPage:', font=('Arial Bold', 20),
                                    size=20, expand_x=True,
@@ -48,4 +44,4 @@ def window(user, passw, web):
 
 
 if __name__ == '__main__':
-    window()
+    manageWindow()

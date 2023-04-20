@@ -25,13 +25,14 @@ def encryptPass(password):
     iv = Random.new().read(DES3.block_size)
     cipher = DES3.new(key, DES3.MODE_CBC, iv)
     encryptedPass = cipher.encrypt(password.encode())
-    hashPass = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
+    hashPass = bcrypt.hashpw(password, bcrypt.gensalt())
     outputDB.append(iv)
     outputDB.append(hashPass)
     outputDB.append(key)
 
     outputFinal.append(encryptedPass)
     outputFinal.append(outputDB)
+    print(outputFinal)
     return outputFinal
 
 # function to decrypt the password
