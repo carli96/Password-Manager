@@ -3,6 +3,12 @@ import PySimpleGUI as sg
 #TODO: meter un boton de mostrar contraseña y que quite los * (si se vuelve a pulsar que los vuelva a poner)
 #TODO: meter un boton de copia, que copie en el portapapeles la contraeña aunque tenga ****
 
+def pass_hide(passw):
+    stri = ""
+    for i in len(passw):
+        stri += "*"
+    return stri
+
 def manageWindow(user, passw, web):
     sg.theme("DarkBlue")
     column_to_centered = [[sg.Text('WebPage:', font=('Arial Bold', 20),
@@ -20,14 +26,14 @@ def manageWindow(user, passw, web):
                           [sg.Text('Password:', font=('Arial Bold', 20),
                                    size=20, expand_x=True,
                                    justification='center')],
-                          [sg.Text(passw, font=('Arial Bold', 14),
+                          [sg.Text(pass_hide(passw), font=('Arial Bold', 14),
                                    size=20, expand_x=True,
                                    justification='center')],
                           [sg.Text(" ", expand_x=True,
                                    justification='center')],
                           [sg.Text(" ", expand_x=True,
                                    justification='center')],
-                          [sg.Button("Cancel", auto_size_button=20)]]
+                          [sg.Button("Cancel", auto_size_button=20), sg.Button("Show", key='show')]]
     layout = [[sg.VPush()],
               [sg.Push(), sg.Column(column_to_centered,
                                     element_justification='c'), sg.Push()],

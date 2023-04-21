@@ -38,18 +38,16 @@ def encryptPass(password):
 # function to decrypt the password
 
 
-def decryptPass(endMsg, outputDB):
-    iv, hash, key = outputDB[0], outputDB[1], outputDB[2]
-
+def decryptPass(encryptedPass, iv, hash, key):
     cipher_decrypt = DES3.new(key, DES3.MODE_CBC, iv)
-    dec = cipher_decrypt.decrypt(endMsg)
-    if bcrypt.hashpw(dec, bcrypt.gensalt()) == hash:
+    dec = cipher_decrypt.decrypt(encryptedPass).decode("utf-8")
+    padding = len(dec) % 8
+    dec += (8-padding)*" "
+    if bcrypt.checkpw(dec.encode("utf-8"), hash.encode("utf-8")):
         return dec
     else:
         print("You have been hacked!!")
-    print("Decrpted message: " + dec.decode())
-    var = endMsg.partition(hash.decode())
 
 
-if __name__ == '__main__':
-    encryptPass("luisqqqqluisqqqqluisqqqqluisqqqqq")
+'''if __name__ == '__main__':
+    encryptPass("luisqqqqluisqqqqluisqqqqluisqqqqq")'''
