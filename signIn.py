@@ -10,6 +10,7 @@ from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
 from threading import Timer
 from nbimporter import NotebookLoader
+import passList
 
 # declare variables
 userId = ""
@@ -142,9 +143,8 @@ def manageWindow():
             webbrowser.open_new(url)
             app.run(debug=False)
             closeWindow()
-            passListWindow = NotebookLoader().load_module('PassList')
             window.close()
-            passListWindow.manageWindow(userId)
+            passList.manageWindow(userId)
 
         if event == sg.WINDOW_CLOSED:
             break

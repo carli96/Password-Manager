@@ -1,17 +1,3 @@
-Errores/ A implementar en ventanas:   
-    PassList:
-        Cuando se selecciona una cuenta existente:
-            Se extrae la info del server y del json local para mostrar todo en ExistingAccount
-        Hacer la ventana mas grande
-
-    ExistingAccount:
-        Que muestre la contraseña con *
-        Meter un boton que cuando se pulse muestre la contraseña normal
-        Estaba bien hacer un boton que te copie la contraseña al portapapeles (incluso cuando se muestra con *)
-    
-    EncryptDecrypt:
-        Renombrar EncryptDecrypt.py a encryptDecrypt.py y actualizar el nuevo nombre en todos los sitios desde donde se llama
-
 General:
     Comentar código
 
@@ -20,10 +6,15 @@ A implementar:
         La elimine del json -> en passList.py
         La elimine de la BBDD -> por lo que habrá que implementar una función para esto en dataBaseUtil.py
     Plantearse extraer la funcionalidad referente al json de passList y crear un jsonUtils.py
+    Un botón para que exporte todas las contraseñas
 
 Bug:
     Create account le das cancel y ya no abre los elementos de la lista
     Cerrar pestaña login
+
+Test:
+    Borrar BBDD
+    Full testeo
 
 Antes de entregar:
     Quitar print
