@@ -56,6 +56,8 @@ def callback():
         request=token_request,
         audience=GOOGLE_CLIENT_ID
     )
+    session["google_id"] = id_info.get("sub")
+    session["name"] = id_info.get("name")
     global userId
     userId = session["google_id"]
     endExecution()
