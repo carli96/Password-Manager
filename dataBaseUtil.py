@@ -2,13 +2,10 @@ import pymongo
 from bson.objectid import ObjectId
 
 connection_string = "mongodb+srv://luis:Df66p3obwpropSEd@passmanager.sixpzvi.mongodb.net/?retryWrites=true&w=majority"
-
 # Create a MongoClient object
 client = pymongo.MongoClient(connection_string)
-
 # Access the database
 db = client["PassManager"]
-
 # Access a collection within the database
 collection = db["Accounts"]
 

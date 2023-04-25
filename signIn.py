@@ -4,13 +4,12 @@ import pathlib
 import requests
 import google.auth.transport.requests
 import webbrowser
-from flask import Flask, session, abort, redirect, request, Response
+import passList
+from flask import Flask, session, abort, redirect, request, Response, render_template
 from google.oauth2 import id_token
 from google_auth_oauthlib.flow import Flow
 from pip._vendor import cachecontrol
-from threading import Timer
-from nbimporter import NotebookLoader
-import passList
+
 
 # declare variables
 userId = ""
@@ -57,21 +56,10 @@ def callback():
         request=token_request,
         audience=GOOGLE_CLIENT_ID
     )
-
-    session["google_id"] = id_info.get("sub")
-    session["name"] = id_info.get("name")
     global userId
     userId = session["google_id"]
-    closeWindow()
     endExecution()
     return Response(status=200)
-
-# route to logout
-@app.route("/logout")
-def logout():
-    print("logout")
-    session.clear()
-    return redirect("/")
 
 # index
 @app.route("/")
@@ -80,24 +68,8 @@ def index():
     session["state"] = state
     return redirect(authorization_url)
 
-# function to close the window
-def closeWindow():
-    return """
-    <html>
-        <head>
-            <title>Respuesta HTTP</title>
-            <script>
-                window.close();
-            </script>
-        </head>
-        <body>
-            <p>HTTP response received</p>
-        </body>
-    </html>"""
-
 # end the flask execution after recovering the password
 def endExecution():
-    # Código a ejecutar
     request.environ.get('werkzeug.server.shutdown')()
     return 'flask is closed'
 
@@ -128,7 +100,6 @@ def manageWindow():
             # Open the URL in a new browser window/tab
             webbrowser.open_new(url)
             app.run(debug=False)
-            closeWindow()
             window.close()
             passList.manageWindow(userId)
 

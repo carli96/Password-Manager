@@ -1,13 +1,8 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-@author: Luis Martínez Moreno PID: 6366100
-"""
-
-# first we import the libraries
 import random, string
+
 # Given the parameters from the promt, it generates the password
 # manages different errors that might happen while introducing wrong attribute values
+# generates the passwords using thr XKCD method in order to remember the passwords
 def generatePassword(nWords, caps, numbers, symbols):
     #First we read the wordlist (only English words in lower case)
     with open("./nonExecutableFiles/corncob_lowercase.txt", "r") as file:

@@ -34,5 +34,4 @@ def manageWindow(user, passw, web):
             return 1
         if event == sg.WIN_CLOSED or event == "Cancel":
             break
-    print("window close")
     window.close()

@@ -3,8 +3,8 @@ import passGenerator
 
 def manageWindow():
     sg.theme("DarkBlue")
-    layout = [[sg.Text("Length", key="new")],
-              [sg.Slider(range=(7, 20), default_value=10,
+    layout = [[sg.Text("Harden level", key="new")],
+              [sg.Slider(range=(3, 10), default_value=10,
                expand_x=True, enable_events=True,
                          orientation='horizontal', key='-SL-')],
               [sg.Text("Numbers", key="tx_numbers")],
