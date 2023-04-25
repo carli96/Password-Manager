@@ -1,23 +1,11 @@
-General:
-    Comentar código
-
-A implementar:
-    Borrado de cuentas, un botón en PassList que elimine la contraseña de la lista y:
-        La elimine del json -> en passList.py
-        La elimine de la BBDD -> por lo que habrá que implementar una función para esto en dataBaseUtil.py
-    Plantearse extraer la funcionalidad referente al json de passList y crear un jsonUtils.py
-    Un botón para que exporte todas las contraseñas
-
 Bug:
-    Create account le das cancel y ya no abre los elementos de la lista
     Cerrar pestaña login
+    Arreglar botón generatePassword
 
 Test:
-    Borrar BBDD
     Full testeo
 
 Antes de entregar:
     Quitar print
     Quitar librerías innecesarias y código que no se llame
     Format de todos los .py
-    Quitar todos los main menos main.py

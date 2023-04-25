@@ -17,7 +17,6 @@ userId = ""
 app = Flask("Google Login App")
 app.secret_key = "CodeSpecialist.com"
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
-#GOOGLE_CLIENT_ID = "709048093959-h458e98t1o2rgajm1h293jmv80nnt1ab.apps.googleusercontent.com"
 GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID", None)
 client_secrets_file = os.path.join(pathlib.Path(
     __file__).parent, "nonExecutableFiles/client_secret.json")
@@ -30,8 +29,6 @@ flow = Flow.from_client_secrets_file(
 )
 
 # manage if there has been a login
-
-
 def login_is_required(function):
     def wrapper(*args, **kwargs):
         if "google_id" not in session:
@@ -42,8 +39,6 @@ def login_is_required(function):
     return wrapper
 
 # route to manage the login process
-
-
 @app.route("/callback")
 def callback():
     flow.fetch_token(authorization_response=request.url)
@@ -70,7 +65,6 @@ def callback():
     closeWindow()
     endExecution()
     return Response(status=200)
-    #return redirect("/protected_area")
 
 # route to logout
 @app.route("/logout")
@@ -80,8 +74,6 @@ def logout():
     return redirect("/")
 
 # index
-
-
 @app.route("/")
 def index():
     authorization_url, state = flow.authorization_url()
@@ -109,15 +101,9 @@ def endExecution():
     request.environ.get('werkzeug.server.shutdown')()
     return 'flask is closed'
 
-
-@app.route("/protected_area")
-@login_is_required
-def protected_area():
-    return "Hello {session['name']}! <br/> <a href='/logout'><button>Logout</button></a>"
-
 # -----------------------------------------------------
 
-
+# Manages the login window
 def manageWindow():
     global userId
     # Define layout
@@ -151,9 +137,3 @@ def manageWindow():
 
     # Close windows
     window.close()
-
-'''
-if __name__ == '__main__':
-    #manageWindow()
-    app.run(debug=True)
-'''

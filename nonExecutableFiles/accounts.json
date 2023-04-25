@@ -1,0 +1,20 @@
+[
+    {
+        "id": "64471a90b56af5fe7614d1d9",
+        "user": "1111",
+        "web": "test1",
+        "encryptedPass": "xWPdS7Umdiw="
+    },
+    {
+        "id": "64471a97b56af5fe7614d1da",
+        "user": "2222",
+        "web": "test2",
+        "encryptedPass": "Xf5io7AxGLw="
+    },
+    {
+        "id": "64471c80627e80e31e02e316",
+        "user": "3333",
+        "web": "test3",
+        "encryptedPass": "WkLkbPBcGBc="
+    }
+]
