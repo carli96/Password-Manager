@@ -12,6 +12,7 @@
     Show accounts stored in a server
     Store new accounts
     Generate safe passwords
+    Passwords exportation to save offline
 
 4- Disclaimer
     The program is meant to use one google account per user, in case that several accounts have to be used for testing purposes, remove all the entires of accounts.json, so the file is just [] 
