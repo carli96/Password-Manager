@@ -39,13 +39,3 @@ def insert(userID, web, EncryptedKey, HashedKey, IV):
 # removes the element where id == _id
 def remove(id):
     collection.delete_one({"_id": ObjectId(id)})
-
-'''# WARNING, REMOVES ALL THE DB, FOR DEVELOPING PURPOSES
-def clearDB():
-    collection.delete_many({})
-
-def main():
-    clearDB()
-
-if __name__ == "__main__":
-    main()'''
